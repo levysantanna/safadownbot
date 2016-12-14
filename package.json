@@ -5,6 +5,9 @@
   "main": "index.js",
   "repository": "",
   "author": "Sciencecat",
+  "scripts": {
+    "start": "node index"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
