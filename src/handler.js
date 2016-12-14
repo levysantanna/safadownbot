@@ -13,7 +13,7 @@ class Handler {
         const vagabundo = 100 - anjo;
         const body = JSON.stringify({
           chat_id: message.chat.id,
-          text: `Hoje ${message.from.first_name} está ${anjo}% anjo mas aquele ${vagabundo}% é vagabundo!`
+          text: `Hoje ${message.from.first_name || message.from.username || 'Sei lá quem'} está ${anjo}% anjo mas aquele ${vagabundo}% é vagabundo!`
         });
         
         return fetch(`https://api.telegram.org/bot${process.env.API_KEY}/sendMessage`, { 
@@ -31,7 +31,14 @@ class Handler {
         const mimimi = message.text
             .replace(/(a|e|o|u)/g, 'i')
             .replace(/(A|E|O|U)/g, 'I')
-            .replace(/(á|é|ó|ú)/g, 'í');
+            .replace(/(á|é|ó|ú)/g, 'í')
+            .replace(/(Á|É|Ó|Ú)/g, 'Í')
+            .replace(/(à|è|ò|ù)/g, 'í')
+            .replace(/(À|È|Ò|Ù)/g, 'Í')
+            .replace(/(â|ê|ô|û)/g, 'Î')
+            .replace(/(Â|Ê|Ô|Û)/g, 'Î')
+            .replace(/(ã|õ)/g, 'I')
+            .replace(/(Ã|Õ)/g, 'I');
         const body = JSON.stringify({
           chat_id: message.chat.id,
           text: mimimi
@@ -96,7 +103,9 @@ class Handler {
             return;
         }
         
-        console.log(JSON.stringify(message));
+        if (process.env.LOG && process.env.LOG.toLowerCase() === 'true') {
+            console.log(JSON.stringify(message));
+        }
     }
 
     _parseMessage(message) {
