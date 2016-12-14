@@ -2,5 +2,5 @@
 
 #### Commands
 
-/mimimi <text>
-/safadometro
+- /mimimi <text>
+- /safadometro
