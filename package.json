@@ -1,0 +1,15 @@
+{
+  "name": "safadown_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": "",
+  "author": "Sciencecat",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "node-fetch": "^1.6.3",
+    "seedrandom": "^2.4.2"
+  }
+}
